@@ -25,7 +25,7 @@ export function Projects() {
             />
             <div className="space-y-10 px-0 md:px-10 max-w-6xl">
               <h4 className="text-4xl font-semibold text-center">
-                <span className="underline decoration-[#f7ab0a]/50">Case study {i + 1} of {projects.length}:</span> ups clone
+                <span className="underline decoration-mainColor/50">Case study {i + 1} of {projects.length}:</span> ups clone
               </h4>
               <p className="text-center text-lg md:text-left">project Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusamus commodi ea error, harum illo nostrum odio pariatur possimus quos ratione reiciendis repellendus sequi sint soluta. Excepturi explicabo laboriosam sed.</p>
             </div>
@@ -34,7 +34,7 @@ export function Projects() {
 
       </div>
 
-      <div className="w-full absolute top-[30%] bg-[#f7ab0a]/10 left-0 h-[500px] -skew-y-12"></div>
+      <div className="w-full absolute top-[30%] bg-mainColor/10 left-0 h-[500px] -skew-y-12"></div>
 
     </motion.div>
   );

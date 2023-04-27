@@ -12,7 +12,7 @@ const BackgroundCircles = () => {
       <div className="absolute mt-52 animate-ping border border-[#333333] rounded-full h-[200px] w-[200px]"/>
       <div className="absolute mt-52 animate-ping border border-[#333333] rounded-full h-[300px] w-[300px]"/>
       <div className="absolute mt-52 animate-ping border border-[#333333] rounded-full h-[500px] w-[500px]"/>
-      <div className="absolute mt-52 animate-pulse border border-[#f7ab0a] opacity-20 rounded-full h-[650px] w-[650px]"/>
+      <div className="absolute mt-52 animate-pulse border border-mainColor opacity-20 rounded-full h-[650px] w-[650px]"/>
       <div className="absolute mt-52 animate-ping border border-[#333333] rounded-full h-[800px] w-[800px]"/>
 
     </motion.div>

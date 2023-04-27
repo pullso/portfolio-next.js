@@ -21,7 +21,7 @@ const About = () => {
 
       <div className="space-y-10 px-0 md:px-10 xl:max-w-2xl">
         <h4 className="text-4xl font-semibold">Here is a <span
-          className="underline decoration-[#f7ab0a]/50">little</span> background</h4>
+          className="underline decoration-mainColor/50">little</span> background</h4>
         <p className="text-base">
           Hey there! 👋 I'm a frontend developer with a passion for Vue.js and React! I specialize in delivering
           high-quality, user-friendly, and visually stunning web applications that leave a lasting impression. 💻
