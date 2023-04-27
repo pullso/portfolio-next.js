@@ -7,4 +7,9 @@
     @apply px-6 py-2 border border-[#242424] rounded-full uppercase tracking-widest text-gray-500
     transition-all hover:border-[#f7AB0a]/40 hover:text-[#f7ab0a]/40 text-sm
   }
+
+  .sectionName {
+    @apply absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl
+  }
 }
+
