@@ -9,7 +9,10 @@ import {ContactMe} from "@/components/ContactMe";
 import Link from "next/link";
 import {sanityClient} from "@/sanity";
 import {IExperience, IPageInfo, IProject, ISkill, ISocial} from "@/types/interfaces";
-import {GetStaticProps} from "next";
+import {GetStaticProps, GetStaticPropsResult} from "next";
+import {ArrowUpCircleIcon} from '@heroicons/react/24/solid'
+
+
 
 type Props = {
   pageInfo: IPageInfo;
@@ -21,10 +24,10 @@ type Props = {
 
 type EmptyProps = {
   pageInfo: {};
-  skills: any[];
-  projects: any[];
-  socials: any[];
-  experiences: any[];
+  skills: [];
+  projects: [];
+  socials: [];
+  experiences: [];
 }
 
 export default function Home({pageInfo, skills, projects, socials, experiences}: Props) {
@@ -58,11 +61,12 @@ export default function Home({pageInfo, skills, projects, socials, experiences}:
         <section className="snap-start" id="contact">
           <ContactMe pageInfo={pageInfo}/>
         </section>
-        <Link href="#hero">
+        <Link href={"#hero"}>
           <footer className="sticky bottom-5 w-full cursor-pointer">
             <div className="flex items-center justify-center">
-              <img className="h-10 w-10 rounded-full filter grayscale hover:grayscale-0 cursor-pointer" src="http://"
-                   alt=""/>
+              <div className="h-10 w-10 filter grayscale hover:grayscale-0 cursor-pointer text-mainColor">
+                <ArrowUpCircleIcon />
+              </div>
             </div>
           </footer>
         </Link>
@@ -71,12 +75,14 @@ export default function Home({pageInfo, skills, projects, socials, experiences}:
   )
 }
 
-export const getStaticProps: GetStaticProps<Props | EmptyProps> = async () => {
+export const getStaticProps: GetStaticProps<Props | EmptyProps> = async (): Promise<
+  GetStaticPropsResult<Props | EmptyProps>
+> => {
   try {
     const typeFilter = `_type == $type`;
 
     const [pageInfo, skills, projects, socials, experiences] = await Promise.all([
-      sanityClient.fetch<IPageInfo[]>(`*[${typeFilter}][0]`, {type: 'pageInfo'}),
+      sanityClient.fetch<IPageInfo[]>(`*[${typeFilter}]`, {type: 'pageInfo'}),
       sanityClient.fetch<ISkill[]>(`*[${typeFilter}]`, {type: 'skill'}),
       sanityClient.fetch<IProject[]>(`*[${typeFilter}]{...,technologies[]->}`, {type: 'project'}),
       sanityClient.fetch<ISocial[]>(`*[${typeFilter}]`, {type: 'social'}),
@@ -85,7 +91,7 @@ export const getStaticProps: GetStaticProps<Props | EmptyProps> = async () => {
 
     return {
       props: {
-        pageInfo,
+        pageInfo: pageInfo[0],
         skills,
         projects,
         socials,
