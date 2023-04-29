@@ -1,6 +1,8 @@
 import React from "react";
 import {PhoneIcon, MapPinIcon, EnvelopeIcon} from '@heroicons/react/24/solid'
 import {useForm, SubmitHandler} from 'react-hook-form';
+import {IPageInfo} from "@/types/interfaces";
+
 
 type Inputs = {
   name: string,
@@ -9,7 +11,11 @@ type Inputs = {
   message: string,
 };
 
-export function ContactMe({pageInfo}) {
+interface ContactMeProps {
+  pageInfo: IPageInfo
+}
+
+export function ContactMe({pageInfo}: ContactMeProps) {
   const { register, handleSubmit, watch, formState: { errors } } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = formData => {
     window.location.href = `mailto:pullso.code@gmail.com?subject=${formData.subject}&body=Hi, my name is ${formData.name}, ${formData.message} (${formData.email})`
