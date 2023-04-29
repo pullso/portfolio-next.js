@@ -6,38 +6,102 @@ import {WorkExperience} from "@/components/WorkExperience";
 import {Skills} from "@/components/Skills";
 import {Projects} from "@/components/Projects";
 import {ContactMe} from "@/components/ContactMe";
+import Link from "next/link";
+import {sanityClient} from "@/sanity";
+import {IExperience, IPageInfo, IProject, ISkill, ISocial} from "@/types/interfaces";
+import {GetStaticProps} from "next";
 
+type Props = {
+  pageInfo: IPageInfo;
+  skills: ISkill[];
+  projects: IProject[];
+  socials: ISocial[];
+  experiences: IExperience[];
+}
 
-export default function Home() {
+type EmptyProps = {
+  pageInfo: {};
+  skills: any[];
+  projects: any[];
+  socials: any[];
+  experiences: any[];
+}
+
+export default function Home({pageInfo, skills, projects, socials, experiences}: Props) {
+
   return (
     <>
-      <div className="bg-[rgb(36,36,36)] text-white h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0">
-        <Header/>
+      <div
+        className="bg-[rgb(36,36,36)] text-white h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 myScrollbar">
+
+        <Header socials={socials} pageInfo={pageInfo}/>
         <section id="hero" className="snap-start">
-          <Hero />
+          <Hero pageInfo={pageInfo}/>
         </section>
 
         <section id="about" className="snap-center">
-          <About />
+          <About pageInfo={pageInfo}/>
         </section>
 
         <section id="experience" className="snap-center">
-          <WorkExperience />
+          <WorkExperience experiences={experiences}/>
         </section>
 
         <section id="skills" className="snap-center">
-          <Skills />
+          <Skills skills={skills}/>
         </section>
 
         <section id="projects" className="snap-center">
-          <Projects />
+          <Projects projects={projects}/>
         </section>
 
         <section className="snap-start" id="contact">
-          <ContactMe />
+          <ContactMe pageInfo={pageInfo}/>
         </section>
-
+        <Link href="#hero">
+          <footer className="sticky bottom-5 w-full cursor-pointer">
+            <div className="flex items-center justify-center">
+              <img className="h-10 w-10 rounded-full filter grayscale hover:grayscale-0 cursor-pointer" src="http://"
+                   alt=""/>
+            </div>
+          </footer>
+        </Link>
       </div>
     </>
   )
 }
+
+export const getStaticProps: GetStaticProps<Props | EmptyProps> = async () => {
+  try {
+    const typeFilter = `_type == $type`;
+
+    const [pageInfo, skills, projects, socials, experiences] = await Promise.all([
+      sanityClient.fetch<IPageInfo[]>(`*[${typeFilter}][0]`, {type: 'pageInfo'}),
+      sanityClient.fetch<ISkill[]>(`*[${typeFilter}]`, {type: 'skill'}),
+      sanityClient.fetch<IProject[]>(`*[${typeFilter}]{...,technologies[]->}`, {type: 'project'}),
+      sanityClient.fetch<ISocial[]>(`*[${typeFilter}]`, {type: 'social'}),
+      sanityClient.fetch<IExperience[]>(`*[${typeFilter}]{...,technologies[]->}`, {type: 'experience'}),
+    ]);
+
+    return {
+      props: {
+        pageInfo,
+        skills,
+        projects,
+        socials,
+        experiences,
+      },
+    };
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    return {
+      props: {
+        pageInfo: {},
+        skills: [],
+        projects: [],
+        socials: [],
+        experiences: []
+      },
+    };
+  }
+};
