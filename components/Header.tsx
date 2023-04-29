@@ -1,10 +1,15 @@
 import React from 'react';
 import {SocialIcon} from "react-social-icons";
 import {motion} from "framer-motion";
+import Link from "next/link";
+import {IPageInfo, ISocial} from "@/types/interfaces";
 
 
-type Props = {}
-const Header = (props: Props) => {
+type Props = {
+  socials: ISocial[]
+  pageInfo: IPageInfo
+}
+const Header = ({socials, pageInfo}: Props) => {
   return (
     <header className="sticky top-0 p-5 flex items-start justify-between max-w-7xl mx-auto xl:items-center z-20">
       <motion.div
@@ -15,10 +20,10 @@ const Header = (props: Props) => {
         }}
         className="flex flex-row items-center"
       >
-        <SocialIcon url="https://github.com/pullso/" fgColor="gray" bgColor="transparent"/>
-        <SocialIcon url="https://gitlab.com/pullso/" fgColor="gray" bgColor="transparent"/>
-        <SocialIcon url="https://www.linkedin.com/in/pavel-dubitskii/" fgColor="gray" bgColor="transparent"/>
-        <SocialIcon url="https://www.instagram.com/pullso_live/" fgColor="gray" bgColor="transparent"/>
+        {socials.map((social) => (
+          <SocialIcon key={social._id} url={social.url} fgColor="gray" bgColor="transparent"/>
+
+        ))}
       </motion.div>
       <motion.div
         initial={{
@@ -32,10 +37,10 @@ const Header = (props: Props) => {
         }}
         className="flex flex-row items-center text-gray-300"
       >
-        <SocialIcon url="mailto:pullso.code@gmail.com" fgColor="gray" bgColor="transparent"/>
-        <SocialIcon url="https://t.me/pullso" fgColor="gray" bgColor="transparent"/>
-        <SocialIcon url="https://wa.me/79920105554" fgColor="gray" bgColor="transparent"/>
-        <p className="uppercase hidden md:inline-flex text-sm text-gray-400">get in touch</p>
+        <SocialIcon url={"mailto:" + pageInfo.email} fgColor="gray" bgColor="transparent"/>
+        <Link href={"#contact"}>
+          <p className="uppercase hidden md:inline-flex text-sm text-gray-400 cursor-pointer">get in touch</p>
+        </Link>
       </motion.div>
     </header>
   );

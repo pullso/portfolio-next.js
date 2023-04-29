@@ -15,5 +15,9 @@
   .customInput {
     @apply outline-none bg-slate-400/10 rounded-sm border-b px-6 py-4 border-[#242424] text-gray-500 placeholder-gray-500 transition-all focus:border-mainColor/40 focus:text-mainColor/40 hover:border-mainColor/40
   }
+
+  .myScrollbar {
+    @apply scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-mainColor/80
+  }
 }
 

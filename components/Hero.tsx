@@ -2,13 +2,16 @@ import React from 'react';
 import {useTypewriter, Cursor} from 'react-simple-typewriter'
 import BackgroundCircles from "@/components/BackgroundCircles";
 import Link from "next/link";
-import Image from "next/image";
+import {IPageInfo} from "@/types/interfaces";
+import {urlFor} from "@/sanity";
 
-type Props = {}
-const Hero = (props: Props) => {
-  const [text, count] = useTypewriter({
+type Props = {
+  pageInfo:IPageInfo
+}
+const Hero = ({pageInfo}: Props) => {
+  const [text] = useTypewriter({
     words: [
-      `Hi! I'm Pavel Dubitskii`,
+      pageInfo?.name,
       'Guy-who-loves-Coffee.tsx',
       'ButLovesToCodeMore.vue'
     ],
@@ -19,27 +22,27 @@ const Hero = (props: Props) => {
   return (
     <div className="h-screen flex flex-col space-y-8 items-center justify-center overflow-hidden">
       <BackgroundCircles/>
-      <Image width={128} height={128}
-        className="relative rounded-full flex-col space-y-8 items-center justify-center"
-        src="/main%20photo.jpg" alt="my photo"/>
+      <img
+        className="relative rounded-full flex-col space-y-8 items-center justify-center h-32 w-32"
+        src={urlFor(pageInfo?.heroImage).url()} alt="my photo"/>
       <div className="z-20">
         <div className="flex justify-center flex-col items-center">
-          <h2 className="text-sm uppercase text-gray-500 pb-2 tracking-[15px]">Frontend Developer</h2>
+          <h2 className="text-sm uppercase text-gray-500 pb-2 tracking-[15px]">{pageInfo?.role}</h2>
           <h1 className="text-5xl lg:text-6xl font-semibold px-10">
             <span className="mr-3">{text}</span>
             <Cursor cursorColor="#f7ab0a"/>
           </h1>
           <div className="pt-5">
-            <Link href="#about">
+            <Link href={"#about"}>
               <button className="heroButton">About</button>
             </Link>
-            <Link href="#experience">
+            <Link href={"#experience"}>
               <button className="heroButton">Experience</button>
             </Link>
-            <Link href="#skills">
+            <Link href={"#skills"}>
               <button className="heroButton">Skills</button>
             </Link>
-            <Link href="#projects">
+            <Link href={"#projects"}>
               <button className="heroButton">Projects</button>
             </Link>
           </div>
