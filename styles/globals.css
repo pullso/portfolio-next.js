@@ -17,7 +17,7 @@
   }
 
   .myScrollbar {
-    @apply scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-mainColor/80 scrollbar-thin
+    @apply scrollbar-track-gray-400/20 scrollbar-thumb-mainColor/80 scrollbar-thin
   }
 }
 

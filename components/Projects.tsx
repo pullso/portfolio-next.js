@@ -14,14 +14,14 @@ export function Projects({projects}: ProjectsProps) {
       initial={{opacity: 0}}
       whileInView={{opacity: 1}}
       transition={{duration: 1.5}}
-      className="h-fit min-h-screen  relative flex overflow-hidden flex-col text-left md:flex-row max-w-full justify-evenly mx-auto items-center z-0">
+      className="h-fit min-h-screen  relative flex overflow-hidden flex-col text-left md:flex-row max-w-full justify-evenly mx-auto items-center z-0 snap-start">
       <h3 className="sectionName">Projects</h3>
       <div
-        className="relative w-full flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-20 myScrollbar scrollbar-thin">
+        className="relative w-full flex overflow-x-scroll overflow-y-hidden z-20 myScrollbar scrollbar-thin mt-24 xlg:mt-0">
         {projects?.map((project, i) => (
           <div
             key={project._id}
-            className="w-screen flex-shrink-0 snap-center flex flex-col items-center space-y-5 p-20 md:p-44 h-screen">
+            className="w-screen flex-shrink-0 snap-center flex flex-col items-center space-y-5 p-10 xlg:p-44 h-screen">
             <motion.img
               initial={{y: -300, opacity: 0}}
               whileInView={{opacity: 1, y: 0}}
@@ -45,8 +45,10 @@ export function Projects({projects}: ProjectsProps) {
                   />))
                 }
               </div>
-
               <p className="text-center text-lg md:text-left">{project.summary}</p>
+              <div>
+                <a href={project.link} target={"_blank"} className="bg-mainColor/50 py-3 px-8 rounded-full text-white/50 hover:text-white bg-mainColor tracking-[5px] uppercase text-lg">View</a>
+              </div>
             </div>
           </div>
         ))}

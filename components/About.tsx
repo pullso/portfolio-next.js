@@ -20,12 +20,12 @@ const About = ({pageInfo}: Props) => {
         whileInView={{x: 0, opacity: 1}}
         viewport={{once: true}}
         transition={{duration: 1.2}}
-        className="-mb-20 md:mb-0 flex-shrink w-56 h-70 rounded-2xl object-cover md:rounded-lg md:w-64 md:h-96 xl:w-[400px] xl:h-[600px] xl:mt-24 mt-28 md:mt-0"
+        className="-mb-20 md:mb-0 flex-shrink w-56 h-70 rounded-2xl object-cover md:rounded-lg md:w-64 md:h-96 xl:w-[400px] xl:h-[600px] xl:mt-24 mt-28 xlg:mt-0"
         src={urlFor(pageInfo?.profilePic).url()}
         alt="main photo of man"
       />
 
-      <div className="space-y-10 px-0 md:px-10 xl:max-w-2xl mt-24 md:mt-0">
+      <div className="space-y-10 px-0 md:px-10 xl:max-w-2xl mt-24 xlg:mt-0">
         <h4 className="text-2xl md:text-4xl font-semibold">Here is a <span
           className="underline decoration-mainColor/50">little</span> background</h4>
         <p className="text-base" dangerouslySetInnerHTML={{__html: pageInfo?.backgroundInfo}}></p>

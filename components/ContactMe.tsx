@@ -25,7 +25,7 @@ export function ContactMe({pageInfo}: ContactMeProps) {
     <div
       className="h-fit min-h-screen  flex flex-col relative text-center md:text-left md:flex-row max-w-7xl px-10 justify-evenly mx-auto items-center">
       <h3 className="sectionName">contact</h3>
-      <div className="flex max-w-full flex-col space-y-10 mt-28 md:mt-0">
+      <div className="flex max-w-full flex-col space-y-10 mt-28 md:mt-32 xlg:mt-0">
         <h4 className="text-2xl md:text-4xl font-semibold text-center">
           I have got just what you need.{" "}
           <span className="decoration-mainColor/50 underline">Let's Talk.</span>

@@ -16,7 +16,7 @@ export function WorkExperience({experiences}:Props) {
       className="h-fit min-h-screen flex relative overflow-hidden flex-col text-ltf md:flex-row max-w-full px-10 justify-evenly mx-auto items-center snap-start">
 
       <h3 className="sectionName">Experience</h3>
-      <div className="w-full flex space-x-5 overflow-x-scroll p-10 snap-x snap-mandantory myScrollbar scrollbar-thin mt-24 md:mt-0">
+      <div className="w-full flex space-x-5 overflow-x-scroll p-10 snap-x snap-mandantory myScrollbar scrollbar-thin mt-24 xlg:mt-0">
         {experiences && experiences.map((experience) => (
           <ExperienceCard experience={experience} key={experience._id} />
         ))}
