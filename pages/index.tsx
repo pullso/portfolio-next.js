@@ -62,9 +62,9 @@ export default function Home({pageInfo, skills, projects, socials, experiences}:
           <ContactMe pageInfo={pageInfo}/>
         </section>
         <Link href={"#hero"}>
-          <footer className="sticky bottom-5 w-full cursor-pointer">
-            <div className="flex items-center justify-center">
-              <div className="h-10 w-10 filter grayscale hover:grayscale-0 cursor-pointer text-mainColor">
+          <footer className="sticky bottom-5 w-full ">
+            <div className="flex items-center justify-center relative">
+              <div className="h-10 w-10 filter grayscale hover:grayscale-0 cursor-pointer hover:text-mainColor absolute right-5 bottom-5 opacity-40 hover:opacity-100">
                 <ArrowUpCircleIcon />
               </div>
             </div>

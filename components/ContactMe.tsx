@@ -23,10 +23,10 @@ export function ContactMe({pageInfo}: ContactMeProps) {
 
   return (
     <div
-      className="h-screen flex flex-col relative text-center md:text-left md:flex-row max-w-7xl px-10 justify-evenly mx-auto items-center">
+      className="h-fit min-h-screen  flex flex-col relative text-center md:text-left md:flex-row max-w-7xl px-10 justify-evenly mx-auto items-center">
       <h3 className="sectionName">contact</h3>
-      <div className="flex flex-col space-y-10">
-        <h4 className="text-4xl font-semibold text-center">
+      <div className="flex max-w-full flex-col space-y-10 mt-28 md:mt-0">
+        <h4 className="text-2xl md:text-4xl font-semibold text-center">
           I have got just what you need.{" "}
           <span className="decoration-mainColor/50 underline">Let's Talk.</span>
 
@@ -34,22 +34,22 @@ export function ContactMe({pageInfo}: ContactMeProps) {
         <div className="space-y-10">
           <div className="flex items-center space-x-5 justify-center">
             <PhoneIcon className="text-mainColor h-7 w-7 animate-pulse" />
-            <p className="text-2xl">{pageInfo?.phoneNumber}</p>
+            <p className="text-xl md:text-2xl">{pageInfo?.phoneNumber}</p>
           </div>
 
           <div className="flex items-center space-x-5 justify-center">
             <EnvelopeIcon className="text-mainColor h-7 w-7 animate-pulse" />
-            <p className="text-2xl">{pageInfo?.email}</p>
+            <p className="text-xl md:text-2xl">{pageInfo?.email}</p>
           </div>
 
           <div className="flex items-center space-x-5 justify-center">
             <MapPinIcon className="text-mainColor h-7 w-7 animate-pulse" />
-            <p className="text-2xl">{pageInfo?.address}</p>
+            <p className="text-xl md:text-2xl">{pageInfo?.address}</p>
           </div>
 
         </div>
-        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col space-y-2 w-fit mx-auto">
-          <div className="flex space-x-2">
+        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col space-y-2 w-fit mx-auto max-w-full">
+          <div className="flex space-y-2 md:space-y-0 md:space-x-2 flex-col md:flex-row">
             <input {...register('name')}  placeholder="Name" className="customInput"  type="text"/>
             <input {...register('email')} placeholder="Email" className="customInput" type="email"/>
           </div>

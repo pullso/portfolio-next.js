@@ -11,7 +11,7 @@ type Props = {
 }
 const Header = ({socials, pageInfo}: Props) => {
   return (
-    <header className="sticky top-0 p-5 flex items-start justify-between max-w-7xl mx-auto xl:items-center z-20">
+    <header className="sticky top-0 p-1 md:p-5 flex items-start justify-between max-w-7xl mx-auto xl:items-center z-20 bg-[#242424]">
       <motion.div
         initial={{x: -500, opacity: 0, scale: 0.5}}
         animate={{x: 0, opacity: 1, scale: 1}}

@@ -4,12 +4,12 @@
 
 @layer components {
   .heroButton {
-    @apply px-6 py-2 border border-[#242424] rounded-full uppercase tracking-widest text-gray-500
-    transition-all hover:border-mainColor/40 hover:text-mainColor/40 text-sm
+    @apply px-6 py-2 border border-mainColor/20 mx-1 my-1 rounded-full uppercase tracking-widest text-gray-500
+    transition-all hover:border-mainColor/50 md:border-mainColor/10 hover:text-mainColor/40 text-sm
   }
 
   .sectionName {
-    @apply absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl
+    @apply absolute top-16 md:top-24 uppercase tracking-[20px] text-gray-500 text-xl md:text-2xl
   }
 
   .customInput {
@@ -17,7 +17,7 @@
   }
 
   .myScrollbar {
-    @apply scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-mainColor/80
+    @apply scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-mainColor/80 scrollbar-thin
   }
 }
 
